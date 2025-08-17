@@ -459,8 +459,10 @@ def too_large(error):
     flash('File too large. Maximum size is 16MB.')
     return redirect(request.url)
 
+# Initialize database and upload folder on startup
+init_db()
+create_upload_folder()
+
 if __name__ == '__main__':
-    init_db()
-    create_upload_folder()
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=False)
