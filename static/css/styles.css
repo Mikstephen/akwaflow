@@ -1,0 +1,88 @@
+/* Additional styles for enhanced functionality */
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Message notifications */
+.notification {
+    animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Form validation styles */
+.form-error {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
+.form-success {
+    border-color: #10b981 !important;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
+}
+
+/* Blog post content styling */
+.blog-content {
+    line-height: 1.8;
+}
+
+.blog-content h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem 0;
+    color: #1f2937;
+}
+
+.blog-content h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.75rem 0;
+    color: #374151;
+}
+
+.blog-content p {
+    margin-bottom: 1rem;
+    color: #4b5563;
+}
+
+.blog-content ul, .blog-content ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.blog-content li {
+    margin-bottom: 0.5rem;
+    color: #4b5563;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem !important;
+    }
+    
+    .section-title {
+        font-size: 2rem !important;
+    }
+    
+    .service-card {
+        margin-bottom: 1rem;
+    }
+}

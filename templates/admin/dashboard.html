@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; font-src 'self'">
+    <title>Admin Dashboard - AKWAFLOW</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <h1 class="text-xl font-semibold">AKWAFLOW Admin</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="{{ url_for('index') }}" class="text-gray-600 hover:text-gray-900">View Site</a>
+                    <a href="{{ url_for('admin_logout') }}" class="text-red-600 hover:text-red-800">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm font-bold">{{ post_count }}</span>
+                            </div>
+                        </div>
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">Total Posts</dt>
+                                <dd class="text-lg font-medium text-gray-900">{{ post_count }}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm font-bold">{{ unread_count }}</span>
+                            </div>
+                        </div>
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">Unread Messages</dt>
+                                <dd class="text-lg font-medium text-gray-900">{{ unread_count }}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white shadow rounded-lg p-6">
+                <h3 class="text-lg font-medium text-gray-900 mb-4">Blog Management</h3>
+                <div class="space-y-3">
+                    <a href="{{ url_for('admin_posts') }}" class="block w-full text-left px-4 py-2 bg-blue-50 text-blue-700 rounded hover:bg-blue-100">View All Posts</a>
+                    <a href="{{ url_for('admin_new_post') }}" class="block w-full text-left px-4 py-2 bg-green-50 text-green-700 rounded hover:bg-green-100">Create New Post</a>
+                </div>
+            </div>
+
+            <div class="bg-white shadow rounded-lg p-6">
+                <h3 class="text-lg font-medium text-gray-900 mb-4">Contact Management</h3>
+                <div class="space-y-3">
+                    <a href="{{ url_for('admin_contacts') }}" class="block w-full text-left px-4 py-2 bg-purple-50 text-purple-700 rounded hover:bg-purple-100">View All Messages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
